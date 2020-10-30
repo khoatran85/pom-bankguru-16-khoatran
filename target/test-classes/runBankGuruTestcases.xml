@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="BANK GURU" thread-count="3" parallel="test">
+
+    <listeners>
+        <listener class-name="commons.MethodListener"/>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+
+        <!--  ExtentReport v2 -->
+        <!-- <listener class-name="reportConfig.ExtentReportListener" /> -->
+
+        <!--  ExtentReport v3 -->
+        <!-- <listener class-name="reportConfig.ExtentTestListener" /> -->
+
+        <!--  ExtentReport v4 -->
+        <listener class-name="reportConfig.ExtentListener"/>
+<!--        <listener class-name="retryTestFailed.RetryListener"/>-->
+        <listener class-name="reportConfig.ReportNGListener"/>
+    </listeners>
+
+    <test name="Run on CHROME">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="customer.NewCustomer"/>
+            <class name="customer.EditCustomer"/>
+            <class name="customer.DeleteCustomer"/>
+            <class name="Account.NewAccount"/>
+        </classes>
+    </test>
+
+
+    <test name="Run on FIREFOX">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="customer.NewCustomer"/>
+            <class name="customer.EditCustomer"/>
+            <class name="customer.DeleteCustomer"/>
+            <class name="Account.NewAccount"/>
+        </classes>
+    </test>
+
+
+</suite>
