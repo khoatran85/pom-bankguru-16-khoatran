@@ -16,6 +16,8 @@ import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -219,5 +221,6 @@ public abstract class AbstractTest extends AbstractPage {
 			log.info(e.getMessage());
 		}
 	}
+
 
 }

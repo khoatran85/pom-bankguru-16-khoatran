@@ -19,6 +19,13 @@ public class EditCustomer extends AbstractTest {
     ManagerPageObject managerPage;
     EditCustomerPageObject editCustomerPage;
 
+    String editAddress = "1883 Cursus Avenue";
+    String editCity = "Houston";
+    String editState = "Texas";
+    String editPIN = "166455";
+    String editMobile = "4779728081";
+    public static String editEmail = "testing" + randomNumber() + "@gmail.com";
+
     @Parameters("browser")
     @BeforeClass
     public void BeforeClass(String browserName) {
@@ -291,12 +298,6 @@ public class EditCustomer extends AbstractTest {
 
     @Test
     public void EditCustomer_20_Input_Correct_Info() {
-        String editAddress = "1883 Cursus Avenue";
-        String editCity = "Houston";
-        String editState = "Texas";
-        String editPIN = "166455";
-        String editMobile = "4779728081";
-        String editEmail = "testing" + randomNumber() + "@gmail.com";
 
 
         log.info("NewCustomer_30_Create_New_Customer_Success - Step 01 - Input valid value into textbox");

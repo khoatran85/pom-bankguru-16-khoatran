@@ -20,14 +20,14 @@ public class NewCustomer extends AbstractTest {
     ManagerPageObject managerPage;
     NewCustomerPageObject newCustomerPage;
 
-    String customerName = "AUTOMATION TESTING";
+    public static String customerName = "AUTOMATION TESTING";
     String dateOfBirth = "1989-01-01";
     String address = "PO Box 911 8331 Duis Avenue";
     String city = "Tampa";
     String state = "FL";
     String PIN = "466250";
     String mobile = "4555442476";
-    String email = "automation" + randomNumber() + "@gmail.com";
+    public static String email = "automation" + randomNumber() + "@gmail.com";
     String password = "automation";
     String gender = "female";
     public static String customerID;

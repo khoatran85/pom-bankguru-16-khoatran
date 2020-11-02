@@ -21,10 +21,10 @@
     <test name="Run on CHROME">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="customer.NewCustomer"/>
-            <class name="customer.EditCustomer"/>
-            <class name="customer.DeleteCustomer"/>
-            <class name="Account.NewAccount"/>
+            <!--            <class name="customer.NewCustomer"/>-->
+            <!--            <class name="customer.EditCustomer"/>-->
+            <!--            <class name="customer.DeleteCustomer"/>-->
+            <!--            <class name="Account.NewAccount"/>-->
         </classes>
     </test>
 

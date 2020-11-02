@@ -10,6 +10,8 @@ import pageObject.ManagerPageObject;
 import pageUI.AbstractPageUI;
 import pageUI.NewCustomerPageUI;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -645,5 +647,13 @@ public abstract class AbstractPage {
 
     public String getValueByTitle(WebDriver driver, String titleName) {
         return getElementText(driver, NewCustomerPageUI.CUSTOMER_REGISTER_SUCCESS_VALUE_BY_TITLE_IN_TABLE, titleName);
+    }
+
+
+    public static String getCurrentDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date now = new Date();
+        String currentDate = dateFormat.format(now);
+        return currentDate;
     }
 }

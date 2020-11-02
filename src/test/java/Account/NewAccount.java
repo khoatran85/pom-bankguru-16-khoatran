@@ -2,6 +2,8 @@ package Account;
 
 import commons.AbstractTest;
 import commons.GlobalConstants;
+import customer.EditCustomer;
+import customer.NewCustomer;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
@@ -11,12 +13,16 @@ import pageObject.LoginPageObject;
 import pageObject.ManagerPageObject;
 import pageObject.NewAccountPageObject;
 import pageUI.AbstractPageUI;
+import pageUI.NewAccountPageUI;
 
 public class NewAccount extends AbstractTest {
     WebDriver driver;
     LoginPageObject loginPage;
     NewAccountPageObject newAccountPage;
     ManagerPageObject managerPage;
+    String accountType = "Savings";
+    String initialDeposit = "50000";
+    public static String accountID;
 
     @Parameters("browser")
     @BeforeClass
@@ -142,4 +148,32 @@ public class NewAccount extends AbstractTest {
         log.info("NewAccount_10_Initial_Deposit_Cannot_Have_First_Charactor_As_Bland_Space - Step 02 - Verify error message display");
         verifyEquals(newAccountPage.getErrorMessageByTextboxTitle(driver, "Initial deposit"), "First character can not have space");
     }
+
+    @Test
+    public void NewAccount_11_Create_New_Account_Successfully() {
+        log.info("NewAccount_10_Initial_Deposit_Cannot_Have_First_Charactor_As_Bland_Space - Step 01 - Input valid Customer ID");
+        newAccountPage.inputToTextboxByTittle(driver, NewCustomer.customerID, "Customer id");
+
+        log.info("NewAccount_10_Initial_Deposit_Cannot_Have_First_Charactor_As_Bland_Space - Step 02 - Select Account type :" + accountType);
+        newAccountPage.selectValueInDropdown(driver, NewAccountPageUI.ACCOUNT_TYPE_DROPDOWN, accountType);
+
+        log.info("NewAccount_10_Initial_Deposit_Cannot_Have_First_Charactor_As_Bland_Space - Step 03 - Input to 'Initial deposit' textbox with value:" + initialDeposit);
+        newAccountPage.inputToTextboxByTittle(driver, initialDeposit, " Initial deposit");
+
+        log.info("NewAccount_10_Initial_Deposit_Cannot_Have_First_Charactor_As_Bland_Space - Step 04 - Click to submit button");
+        newAccountPage.clickToButtonByName(driver, "submit");
+        String accountOpenDate = newAccountPage.getCurrentOpenDate();
+
+        log.info("NewAccount_10_Initial_Deposit_Cannot_Have_First_Charactor_As_Bland_Space - Step 05 - Verify account created successfully");
+        verifyTrue(newAccountPage.isAccountCreateSuccessMessageDisplay());
+        verifyEquals(newAccountPage.getValueByTitle(driver, "Customer ID"), NewCustomer.customerID);
+        verifyEquals(newAccountPage.getValueByTitle(driver, "Customer Name"), NewCustomer.customerName);
+        verifyEquals(newAccountPage.getValueByTitle(driver, "Email"), EditCustomer.editEmail);
+        verifyEquals(newAccountPage.getValueByTitle(driver, "Account Type"), accountType);
+        verifyEquals(newAccountPage.getValueByTitle(driver, "Date of Opening"), accountOpenDate);
+        verifyEquals(newAccountPage.getValueByTitle(driver, "Current Amount"), initialDeposit);
+        accountID = newAccountPage.getValueByTitle(driver, "Account ID");
+    }
+
+
 }
